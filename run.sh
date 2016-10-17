@@ -46,8 +46,8 @@ upgrade_system
 # install software icons themes
 
 echo "start installing some software icons and themes..."
-chmod 755 install/install.sh
-sudo sh install/install.sh
+chmod 755 installthings/install.sh
+sudo sh installthings/install.sh
 
 # config zsh vim mythemes
 
