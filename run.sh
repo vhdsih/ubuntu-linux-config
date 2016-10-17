@@ -1,5 +1,8 @@
 #!/bin/bash
 
+here=`pwd`
+readonly here
+
 echo -e "start update the system... \n"
 echo "" > log/run_log.txt
 
@@ -26,9 +29,10 @@ upgrade_system() {
 # install fonts
 echo "start installing fonts...";
 echo "start installing fonts" >> log/run_log.txt
-
+cd fonts
 chmod 755 fonts/fonts.sh
 sudo sh fonts/fonts.sh
+cd $here
 if [ $? == 0 ]
 then
     echo "fonts installed" >> log/run_log.txt
@@ -50,6 +54,8 @@ chmod 755 installthings/install.sh
 sudo sh installthings/install.sh
 
 # config zsh vim mythemes
-
+cd config
 chmod 755 config/config.sh
 sudo sh config/config.sh 
+cd $here
+echo "ALL END"

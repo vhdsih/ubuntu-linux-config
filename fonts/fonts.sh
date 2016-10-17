@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo cp -r ../resource/Monaco /usr/share/fonts
-
+echo "" > ..log/fonts.txt
 if [ $? == 0]; then
     echo "copy fonts successfully!" >> ../log/font.txt
 else
@@ -12,6 +12,5 @@ sudo chmod 755 *
 sudo mkfontscale
 sudo mkfontdir;
 sudo fc-cache -fv
-cd -
 
 
