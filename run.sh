@@ -30,8 +30,8 @@ upgrade_system() {
 echo "start installing fonts...";
 echo "start installing fonts" >> log/run_log.txt
 cd fonts
-chmod 755 fonts/fonts.sh
-sudo sh fonts/fonts.sh
+chmod 755 fonts.sh
+sudo sh fonts.sh
 cd $here
 if [ $? == 0 ]
 then
@@ -40,8 +40,10 @@ else
     echo "[!] some errors when install fonts" >> log/run_log.txt
 fi
 # add ppa
-chmod 755 ppa/ppa.sh
-sudo sh ppa/ppa.sh
+cd ppa
+chmod 755 ppa.sh
+sudo sh ppa.sh
+cd $here
 # update && upgrade
 
 update_system
@@ -50,12 +52,14 @@ upgrade_system
 # install software icons themes
 
 echo "start installing some software icons and themes..."
-chmod 755 installthings/install.sh
-sudo sh installthings/install.sh
+cd installthings
+chmod 755 install.sh
+sudo sh install.sh
+cd $here
 
 # config zsh vim mythemes
 cd config
-chmod 755 config/config.sh
-sudo sh config/config.sh 
+chmod 755 config.sh
+sudo sh config.sh 
 cd $here
 echo "ALL END"
