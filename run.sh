@@ -31,7 +31,7 @@ echo "start installing fonts...";
 echo "start installing fonts" >> log/run_log.txt
 cd fonts
 chmod 755 fonts.sh
-sudo sh fonts.sh
+sudo ./fonts.sh
 cd $here
 if [ $? == 0 ]
 then
@@ -42,7 +42,7 @@ fi
 # add ppa
 cd ppa
 chmod 755 ppa.sh
-sudo sh ppa.sh
+sudo ./ppa.sh
 cd $here
 # update && upgrade
 
@@ -54,12 +54,12 @@ upgrade_system
 echo "start installing some software icons and themes..."
 cd installthings
 chmod 755 install.sh
-sudo sh install.sh
+sudo ./install.sh
 cd $here
 
 # config zsh vim mythemes
 cd config
 chmod 755 config.sh
-sudo sh config.sh 
+sudo ./config.sh 
 cd $here
 echo "ALL END"

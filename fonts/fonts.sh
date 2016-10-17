@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo cp -r ../resource/Monaco /usr/share/fonts
-echo "" > ..log/fonts.txt
+echo "" > ../log/fonts.txt
 if [ $? == 0]; then
     echo "copy fonts successfully!" >> ../log/font.txt
 else
