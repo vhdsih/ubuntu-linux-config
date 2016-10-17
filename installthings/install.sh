@@ -26,8 +26,9 @@ things=(
     'okular'
     'wiznote'
     'catfish'
-
     'papirus-gtk-icon-theme'
+    'python-pip'
+    'python3-pip'
 
 )
 echo "" > ../log/install_log.txt
