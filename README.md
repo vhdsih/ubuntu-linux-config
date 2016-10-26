@@ -68,7 +68,6 @@ sudo ./run.sh
 * vlc # 视频播放器
 * unity-tweak-tool # unity配置管理
 * shutter # 截图
-* virtualbox # 虚拟机
 * indicator-keylock # 大小写指示器
 * classicmenu-indicator # 经典应用选择指示器
 * albert # 快速搜索工具
@@ -79,6 +78,8 @@ sudo ./run.sh
 * catfish # 文件搜索
 * python-pip # python2.7
 * python3-pip # python3
+* rar
+* unrar
 
 ### 图标
 
@@ -86,41 +87,14 @@ sudo ./run.sh
 
 ### 主题
 
-* MyTheme # 该主题基于arc-dark-theme更改，不支持gtk3.20
+* MyTheme # 该主题基于numix
 
-  主题效果
-
-  ![整体](pics/themes.png)
-
-  unity栏的三种效果
-
-  * 1
-
-    ![all](pics/all.png)
-
-  ​
-
-  * 2
-
-    ![justopen](pics/justopen.png)
-
-  * 3
-
-    ![](pics/none.png)
-
-    实现以上不同的效果需要到unity-tweak-tool上进行调整，图标背景选项，选择所有程序/仅打开的应用程序/不着色
-
-    ![unity-tweal-tool](pics/UnityTweak.png)
 
 ### 字体
 
 * Monaco_YaHei #最好看的中英文字体，适合码代码
 
 * Monaco
-
-  字体效果
-
-  ![font](pics/fonts.png)
 
 ### 其它
 

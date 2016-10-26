@@ -1,5 +1,6 @@
 #!/bin/bash
 
+here=`pwd`
 success_installed=0
 false_installed=0
 things=(
@@ -17,7 +18,6 @@ things=(
     'vlc'
     'unity-tweak-tool'
     'shutter'
-    'virtualbox'
     'indicator-keylock'
     'classicmenu-indicator'
     'albert'
@@ -29,7 +29,8 @@ things=(
     'papirus-gtk-icon-theme'
     'python-pip'
     'python3-pip'
-
+    'rar'
+    'unrar'
 )
 echo "" > ../log/install_log.txt
 echo "the number of the thing is ${#things[*]}"
@@ -51,8 +52,22 @@ for thing in ${things[*]}; do
         echo "[x] ${thing} was not installed." >> ../log/install_log.txt
     fi
 done
+
+
+
 echo "$success_installed things was installed" >> ../log/install_log.txt
 echo "$false_installed sofwares was not installed" >> ../log/install_log.txt
 echo "success: $success_installed"
 echo "false: $false_installed"
-echo "END"
+
+# flux
+echo "start installing flux..."
+cd /tmp
+git clone https://github.com/xflux-gui/xflux-gui.git
+cd xflux-gui
+python download-xflux.py
+sudo python setup.py install
+python setup.py install --user
+cd $here
+
+echo "done"
