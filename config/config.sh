@@ -18,6 +18,8 @@ chsh -s /bin/zsh
 # vim
 sh spf13-vim.sh
 
+cp vimrc.local ~/.vimrc.local
+cp vimrc.before.local ~/.vimrc.before.local
 
 
 
