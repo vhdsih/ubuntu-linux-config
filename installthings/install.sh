@@ -31,6 +31,8 @@ things=(
     'python3-pip'
     'rar'
     'unrar'
+    'mysql-client'
+    'mysql-server'
 )
 echo "" > ../log/install_log.txt
 echo "the number of the thing is ${#things[*]}"
