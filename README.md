@@ -1,7 +1,4 @@
 # ubuntu自动配置脚本
- dongchangzhang 
-
-create@2016.10.17
 
 ### 前言
 
@@ -12,32 +9,29 @@ create@2016.10.17
 ### 结构
 
 ```
-ubuntu-config
-├── config  # 进行zsh、vim等配置
+.
+├── config
 │   ├── config.sh
 │   ├── my_zshrc
-│   └── spf13-vim.sh
-├── fonts # 进行字体配置
+│   ├── spf13-vim.sh
+│   ├── vimrc.before.local
+│   └── vimrc.local
+├── fonts
 │   └── fonts.sh
-├── installthings # 对软件、主题、图标进行安装
+├── installthings
 │   └── install.sh
-├── log # 输出运行的日志 查看安装情况
+├── log
 │   └── run_log.txt
-├── pics # github上显示的图片
-│   ├── all.png
-│   ├── fonts.png
-│   ├── justopen.png
-│   ├── none.png
-│   ├── themes.png
-│   └── UnityTweak.png
-├── ppa # 用于添加ppa
-│   ├── ppa_auto.sh
+├── ppa
 │   └── ppa.sh
 ├── README.md
-├── resource # 资源文件，一个主题、两个字体
+├── resource
 │   ├── Monaco
 │   └── MyTheme
-└── run.sh # 综合执行所有的配置脚本
+└── run.sh
+
+8 directories, 11 files
+
 
 ```
 
@@ -80,6 +74,8 @@ sudo ./run.sh
 * python3-pip # python3
 * rar
 * unrar
+* mysql-server
+* mysql-client
 
 ### 图标
 
@@ -92,9 +88,9 @@ sudo ./run.sh
 
 ### 字体
 
-* Monaco_YaHei #最好看的中英文字体，适合码代码
+* Monaco_YaHei # 最好看的中英文字体
 
-* Monaco
+* Monaco # 适合编代码
 
 ### 其它
 
