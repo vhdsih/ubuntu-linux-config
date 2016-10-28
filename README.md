@@ -57,6 +57,7 @@ sudo ./run.sh
 * zsh    # 强大的命令解释工具
 * autojump # zsh下的一个插件
 * tmux # 强大的终端多窗口等
+* nethogs # 查看各个应用网速占用
 * guake # 下拉终端
 * gitg # 可视化查看git历史
 * vlc # 视频播放器
