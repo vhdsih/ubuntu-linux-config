@@ -13,6 +13,7 @@ things=(
     'zsh'
     'autojump'
     'tmux'
+    'nethogs'
     'guake'
     'gitg'
     'vlc'
