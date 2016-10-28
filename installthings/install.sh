@@ -30,6 +30,7 @@ things=(
     'papirus-gtk-icon-theme'
     'python-pip'
     'python3-pip'
+    'caffeine'
     'rar'
     'unrar'
     'mysql-client'
