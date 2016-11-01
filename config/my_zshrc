@@ -2,7 +2,6 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  
   export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -10,8 +9,8 @@
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # crcandy me@Z [11:40:11] [~/Documents/ll] [master *]
 
-ZSH_THEME="tjkirch_mod"
-
+# ZSH_THEME="tjkirch_mod"
+ZSH_THEME="agnoster"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -431,5 +430,5 @@ export JAVA_HOME=/usr/lib/jvm/java8
 export JRE_HOME=${JAVA_HOME}/jre
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
 export PATH=${JAVA_HOME}/bin:$PATH
-
+export TOMCAT_HOME=/opt/apache-tomcat-9.0.0.M10
 # alias
