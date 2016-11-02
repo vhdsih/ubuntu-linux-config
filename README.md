@@ -102,6 +102,28 @@ sudo ./run.sh
 * VIM
 
   使用spf13-vim配置vim
+  
+### 仍然需要下载安装的
+
+* 网易云音乐
+* WPS
+* chrome
+* VMware
+* vscode
+* MEGA
+* 有道词典
+
+### 仍需要配置
+
+* ssh + git + github
+
+### 下面的放到单分的opt目录中，不需要反复下载
+* clion pycharm etc.
+* tomcat
+* struts2
+* eclipse
+* mysql-connecter
+* android-studio
 
 
 
