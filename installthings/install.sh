@@ -16,6 +16,7 @@ things=(
     'nethogs'
     'guake'
     'gitg'
+    'geany'
     'vlc'
     'unity-tweak-tool'
     'shutter'
