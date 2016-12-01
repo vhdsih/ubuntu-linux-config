@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# theme
-echo "" > ../log/config.txt
-sudo cp -r ../resource/MyTheme /usr/share/themes
-if [ $? == 0 ]; then
-    echo "install theme successfully" >> ../log/config.txt
-else 
-    echo "can not install theme" >> ../log/config.txt
-fi
 
 # zsh
 mv ~/.zshrc ~/.zshrc_back
@@ -21,6 +13,13 @@ sh spf13-vim.sh
 cp vimrc.local ~/.vimrc.local
 cp vimrc.before.local ~/.vimrc.before.local
 
+# powerline font 
+git clone https://github.com/powerline/fonts.git
+cd font
+./install.sh 
+cd -
+rm -rf font 
 
 
-
+# icons
+wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh

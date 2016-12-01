@@ -10,9 +10,9 @@ sudo add-apt-repository ppa:wiznote-team;
 # indicator-keylock
 sudo add-apt-repository ppa:tsbarnes/indicator-keylock;
 # ClassicMenu Indicator
-sudo apt-add-repository ppa:diesch/testing;
+# sudo apt-add-repository ppa:diesch/testing;
 # albert
-sudo add-apt-repository ppa:nilarimogard/webupd8
+# sudo add-apt-repository ppa:nilarimogard/webupd8
 
 #################################################
 # THEMES
@@ -33,7 +33,7 @@ sudo add-apt-repository ppa:nilarimogard/webupd8
 # ICONS
 
 # papirus 
-sudo add-apt-repository ppa:varlesh-l/papirus-pack;
+# sudo add-apt-repository ppa:varlesh-l/papirus-pack;
 
 # numix and numix-circle
 # sudo add-apt-repository ppa:numix/ppa
