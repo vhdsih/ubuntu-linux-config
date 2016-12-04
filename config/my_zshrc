@@ -10,7 +10,7 @@
 # crcandy me@Z [11:40:11] [~/Documents/ll] [master *]
 
 # ZSH_THEME="tjkirch_mod"
-ZSH_THEME="agnoster"
+ZSH_THEME="bullet-train"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -431,4 +431,5 @@ export JRE_HOME=${JAVA_HOME}/jre
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
 export PATH=${JAVA_HOME}/bin:$PATH
 export TOMCAT_HOME=/opt/apache-tomcat-9.0.0.M10
+export NDK=/opt/android-ndk-r13b
 # alias
