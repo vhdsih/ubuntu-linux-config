@@ -433,3 +433,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
 export TOMCAT_HOME=/opt/apache-tomcat-9.0.0.M10
 export NDK=/opt/android-ndk-r13b
 # alias
+alias apti='sudo apt install'
+alias aptud='sudo apt update'
+alias aptug='sudo apt upgrade'
+alias aptf='sudo apt -f install'
+

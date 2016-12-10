@@ -9,28 +9,26 @@
 ### 结构
 
 ```
-.
-├── config
-│   ├── config.sh
-│   ├── my_zshrc
-│   ├── spf13-vim.sh
-│   ├── vimrc.before.local
-│   └── vimrc.local
-├── fonts
-│   └── fonts.sh
-├── installthings
-│   └── install.sh
-├── log
-│   └── run_log.txt
-├── ppa
-│   └── ppa.sh
+ .
+├── install.sh # 运行脚本
+├── log.txt # 输出日志
 ├── README.md
-├── resource
-│   ├── Monaco
-│   └── MyTheme
-└── run.sh
+└── res # 资源文件
+    ├── apps
+    │   └── apps.txt # 需要安装的app，一行一个，必须是支持apt直接安装的
+    ├── font
+    │   └── Monaco # 两种字体
+    │       ├── monaco_linux.ttf
+    │       └── Monaco_Yahei.ttf
+    ├── ppa # 添加ppa的脚本，可以到这里添加或者删除你的ppa
+    │   └── ppa.sh
+    ├── vim # 我的vm配置文件
+    │   └── my_vimrc
+    └── zsh # zsh主题和zsh配置
+        ├── bullet-train.zsh-theme
+        └── my_zshrc
 
-8 directories, 11 files
+7 directories, 10 files
 
 
 ```
@@ -42,9 +40,30 @@
 ```shell
 git clone git@github.com:dongchangzhang/ubuntu-config.git;
 cd ubuntu-config;
-chmod 755 run.sh
-sudo ./run.sh
+chmod 755 install.sh
+./install.sh -你需要的参数
 ```
+
+### 运行级别
+
+```
+--help--
+-0  install applications
+-1  install monaco && micosoft yahei fonts
+-2  config zsh
+-3  config vim
+-4  config icons
+-5  install powerline fonts
+-6  add ppa
+-7  do all for your system, if your system is new one
+-其他  help
+-----
+if you use zsh && vim, you should install powerline fonts at first
+if you want to install apps, you should add ppa at first
+
+```
+
+
 
 ### 软件
 
@@ -68,7 +87,6 @@ sudo ./run.sh
 * albert # 快速搜索工具
 * typora # 好用的markdown工具
 * calibre # 电子书阅读
-* okular # pdf阅读
 * wiznote # 全平台笔记客户端
 * catfish # 文件搜索
 * python-pip # python2.7
@@ -81,11 +99,6 @@ sudo ./run.sh
 ### 图标
 
 * papirus-gtk-icon-theme #最好看的图标，可以搜索这个图标的github
-
-### 主题
-
-* MyTheme # 该主题基于numix
-
 
 ### 字体
 
@@ -101,8 +114,11 @@ sudo ./run.sh
 
 * VIM
 
-  使用spf13-vim配置vim
-  
+  包含airline和其他常用的配置，使用vundle管理插件
+
+* powerline fonts
+
+  airline以及zsh主题需要
 ### 仍然需要下载安装的
 
 * 网易云音乐
