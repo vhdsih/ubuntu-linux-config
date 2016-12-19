@@ -7,9 +7,10 @@ PPA=$HERE/res/ppa/ppa.sh
 VIM=$HERE/res/vim/my_vimrc
 ZSH=$HERE/res/zsh/my_zshrc
 APPS=$HERE/res/apps/apps.txt
-FONTS=$HERE/res/fonts/Monaco
+FONTS=$HERE/res/font/Monaco
 
 echo "" > log.txt
+
 ## update && upgrade system
 update_system()
 {
@@ -48,7 +49,7 @@ config_zsh()
     cd bullet-train-oh-my-zsh-theme
     mv ~/.zshrc ~/.zshrc_back
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-    cp my_zshrc ~/.zshrc
+    cp $ZSH ~/.zshrc
     cp bullet-train.zsh-theme ~/.oh-my-zsh/themes/
     cd $HERE
     chsh -s /bin/zsh
@@ -72,7 +73,7 @@ config_font()
     sudo mkfontdir
     sudo fc-cache -fv
     cd $HERE
-    echo "CONFIG FONTS DONE!"
+    echo "CONFIG FONTS DONE!" >> log.txt
 }
 ## install applications
 install_apps()
@@ -84,12 +85,12 @@ install_apps()
     echo "\n"
 
     for app in $applications; do
-        echo "start installing ${app} ...\n"
+        echo "start installing ${app} ..."
         sudo apt install ${app}
         status=$?
         if [ $status = 0 ] 
         then
-            echo "success install ${app} or it has been exist\n"
+            echo "success install ${app} or it has been exist"
             success_installed=`expr $success_installed + 1`
             echo "[√]${app} was installed or it was exist." >> log.txt
         else
@@ -136,10 +137,10 @@ powerline_fonts()
     echo "start config powerline fonts" >> log.txt
     
     git clone https://github.com/powerline/fonts.git
-    cd font
+    cd fonts
     ./install.sh 
     cd $HERE
-    rm -rf font 
+    rm -rf fonts
 }
 while getopts 01234567 option
 do
@@ -151,7 +152,7 @@ do
             echo "done";;
 
         1)
-            echo "install Monaco && micosoft yahei fonts on your ubuntu"
+            echo "install Monaco && microsoft yahei fonts on your ubuntu"
             config_font
             echo "done";;
         2)

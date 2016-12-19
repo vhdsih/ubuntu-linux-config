@@ -18,7 +18,6 @@ unity-tweak-tool
 shutter
 indicator-keylock
 typora
-calibre
 wiznote
 catfish
 python-pip
@@ -28,6 +27,7 @@ rar
 unrar
 mysql-client
 mysql-server
+arc-flatabulous-theme
 
 
 

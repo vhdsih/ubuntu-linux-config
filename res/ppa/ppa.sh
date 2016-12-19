@@ -19,7 +19,7 @@ sudo add-apt-repository ppa:tsbarnes/indicator-keylock;
 
 # numix
 # sudo add-apt-repository ppa:numix/ppa；
-
+sudo add-apt-repository ppa:noobslab/themes
 # Flatabulous
 # sudo add-apt-repository ppa:noobslab/themes
 
