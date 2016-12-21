@@ -9,6 +9,8 @@ sudo add-apt-repository 'deb https://typora.io ./linux/';
 sudo add-apt-repository ppa:wiznote-team;
 # indicator-keylock
 sudo add-apt-repository ppa:tsbarnes/indicator-keylock;
+# incicator netspeed
+sudo add-apt-repository ppa:nilarimogard/webupd8
 # ClassicMenu Indicator
 # sudo apt-add-repository ppa:diesch/testing;
 # albert

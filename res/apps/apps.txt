@@ -28,10 +28,4 @@ unrar
 mysql-client
 mysql-server
 arc-flatabulous-theme
-
-
-
-
-
-
-
+indicator-netspeed
