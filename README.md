@@ -45,7 +45,7 @@ chmod 755 install.sh
 ```
 
 ### 运行级别
-
+具体到代码中查询，这里列出的仅供参考
 ```
 --help--
 -0  install applications
