@@ -3,14 +3,15 @@
 # the location of here
 HERE=`pwd`
 
+
 # add ppa by this
 PPA=$HERE/res/ppa/ppa.sh
 # my vim config
-VIM=$HERE/res/vim/my_vimrc
+VIM=$HERE/res/vim/vimrc
 # my zsh config
-ZSH=$HERE/res/zsh/my_zshrc
+ZSH=$HERE/res/zsh/zshrc
 # applications will be installed
-APPS=$HERE/res/apps/apps.txt
+APPS=$HERE/res/apps/apps
 # fonts in there
 FONTS=$HERE/res/font/Monaco
 # theme
@@ -18,67 +19,89 @@ THEME=$HERE/res/themes/Ambiance_Mac
 # vscode
 VS_CODE=$HERE/res/vscode/*
 # log wil be write into this file
-LOGS =$HERE/log.txt
+LOGS=$HERE/setup_log
 
 
 # clear log
 echo "" > $LOGS
 
+
+## print log
+print_log()
+{
+    echo -e  "\033[0;31;1m LOGS: $1  \033[0m"
+    echo LOGS: $1 >> $LOGS
+}
+
+
 ## update && upgrade system
 update_system()
 {
+    print_log "UPDATE SYSTEM..."
     sudo apt update
     if [ $? = 0 ] 
-        then echo "update the system successfully" >> $LOGS 
+        then print_log "UPDATE SYSTEM SUCCESSFULLY"
     else
-        echo "have problems when update the system" >> $LOGS
+        print_log "ERROR WHEN UPDATE SYSTEM"
     fi
     sudo apt upgrade
-    
     if [ $? = 0 ] 
-        then echo "upgrade the system successfully" >> $LOGS 
+        then print_log "UPGRADE SYSTEM SUCCESSFULLY" 
     else
-        echo "have problems when upgrade the system" >> $LOGS
+        print_log "ERROR WHEN UPGRADE SYSTEM"
     fi
 }
+
+
 ## config the vim
 config_vim()
 {
-    echo "start config vim..." >> $LOGS
-    mv ~/.vimrc ~/.vimrc_backup
-    mv ~/.vim ~/.vim_backup
+    print_log "CONFIG VIM..."
+    mv ~/.vimrc ~/.vimrc.bck
+    mv ~/.vim ~/.vim.bck
 
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     cp $VIM ~/.vimrc
+
     vim +PluginInstall +qall
 
-    echo "VIM DONE!" >> $LOGS
+    print_log "VIM DONE"
 }
+
+
 ## config the zsh
 config_zsh()
 {
-    echo "start config zsh..." >> $LOGS
-    git clone https://github.com/caiogondim/bullet-train-oh-my-zsh-theme.git
-    cd bullet-train-oh-my-zsh-theme
-    mv ~/.zshrc ~/.zshrc_back
+    print_log "CONFIG ZSH"
+    mv ~/.zshrc ~/.zshrc.bck
+    # oh my zsh
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
     cp $ZSH ~/.zshrc
-    cp bullet-train.zsh-theme ~/.oh-my-zsh/themes/
     cd $HERE
+    print_log "STARTING CHSH TO ZSH"
     chsh -s /bin/zsh
+    
+    if [ $? = 0 ] 
+    then print_log "CHSH SUCCESSFULLY"
+    else 
+        print_log "ERROR WHEN CHSH"
+    fi
 }
+
 ## add ppa
 add_ppa()
 {
-    echo "start add ppas... " >> $LOGS
+    print_log "ADD PPA..."
     sh $PPA
     cd $HERE
-    echo "ADD PPAS DONE" >> $LOGS
+    print_log "ADD PPA DONE"
 }
+
+
 ## config fonts
 config_font()
 {
-    echo "start config fonts..." >> $LOGS
+    print_log "ADD MONACO AND YAHEI FONTS TO UBUNTU"
     sudo cp -r $FONTS /usr/share/fonts/
     cd /usr/share/fonts/Monaco
     sudo chmod 755 *
@@ -86,44 +109,45 @@ config_font()
     sudo mkfontdir
     sudo fc-cache -fv
     cd $HERE
-    echo "CONFIG FONTS DONE!" >> $LOGS
+    print_log "ADD MONACO AND YAHEI DONE"
 }
+
+
 ## install applications
 install_apps()
 {
     # get application from app files
     applications=$(cat $APPS)
 
-    echo "INSTALL APPLICATIONS..." >> $LOGS
+    print_log "INSTALL APPLICATIONS..."
     echo "\n"
 
     for app in $applications; do
-        echo "start installing ${app} ..."
+        print_log "STARTING TO INSTALL $app"
         sudo apt install ${app}
         status=$?
         if [ $status = 0 ] 
         then
-            echo "success install ${app} or it has been exist"
+            print_log "SUCCESSFULLY INSTALLED"
             success_installed=`expr $success_installed + 1`
-            echo "[√]${app} was installed or it was exist." >> $LOGS
+            print_log "[√]${app} WAS INSTALLED OR IT WAS EXIST"
         else
-            echo "installation aborted\n"
+            print_log "ERROR WHEN INSTALL $app"
             false_installed=`expr $false_installed + 1`
-            echo "[x] ${app} was not installed." >> $LOGS
+            print_log "$app WAS NOT BE INATALLED"
         fi
     done
 
     # install information
-    echo "$success_installed things was installed" >> $LOGS
-    echo "$false_installed sofwares was not installed" >> $LOGS
-    echo "$success_installed applications install successfully"
-    echo "$false_installed applications can not be installed, please check!!!"
+    
+    print_log "$success_installed APPLICATIONS WERE INSTALLED SUCCESSFULLY"
+    print_log "$false_installed APPLICATIONS WERE NOT BE INSTALLED, PLEASE CHECK"
 
     # install flux to protect your eyes
-    echo "start installing flux..."
-    echo "start installing flux..." >> $LOGS
+    print_log "INSTALL flux"
 
     cd /tmp
+
     git clone https://github.com/xflux-gui/xflux-gui.git
     cd xflux-gui
     python download-xflux.py 
@@ -131,30 +155,34 @@ install_apps()
     python setup.py install --user 
     cd $HERE
 
-    echo "installing flux finished\n"
-    echo "done" >> $LOGS
-    echo "INSTALL APPLICATIONS DONE"
+    print_log "INSTALL APPLICATIONS DONE"
 }
+
+
 ## icons
 config_icons()
 {
-    echo "start config icons..." >> $LOGS
+    print_log "ADD ICON: PAPIRUS"
 
     wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 
-    echo "ICONS CONFIG DONE" >> $LOGS
+    print_log "ICONS CONFIG DONE"
 }
+
+
 ## theme for Ambiance mac like
 config_theme()
 {
-    echo "Ambiance_Mac theme"
-    echo "cp Ambiance_Mac theme to /usr/share/themes" >> $LOGS
+    print_log "ADD Ambiance_Mac THEME"
+    print_log "CP Ambiance_Mac theme TO /usr/share/themes"
     sudo cp -r $THEME /usr/share/themes
 }
+
+
 ## powerline font
 powerline_fonts()
 {
-    echo "start config powerline fonts" >> $LOGS
+    print_log "ADD POWERLINE FONTS"
     
     git clone https://github.com/powerline/fonts.git
     cd fonts
@@ -162,12 +190,19 @@ powerline_fonts()
     cd $HERE
     rm -rf fonts
 }
+
+
 ## vscode
 config_vscode()
 {
-    echo "config vscode, you must install vscode before"
-    cp $VS_CODE /home/me/.config/Code/User/ 
+    print_log "CONDIF VS CODE"
+    mkdir -p $HOME/.config/Code/User/
+    cp $VS_CODE $HOME/.config/Code/User/ 
 }
+
+print_log "START CONFIGURE UBUNTU..."
+print_log "input ./setup.sh -Q for help"
+
 while getopts 012345678A option
 do
     case "$option" in
@@ -206,6 +241,11 @@ do
             config_theme
             echo "done";;
         8)
+            echo "visual studio code"
+            config_vscode
+            echo "done";;
+
+        9)
             echo "do all"
             add_ppa
             update_system
@@ -217,25 +257,25 @@ do
             config_icons
             config_theme
             echo "done";;
-        A)
-            echo "config vscode"
-            config_vscode
-            echo "done";;
 
         \?)
-            echo "--help--"
-            echo "-0  install applications"
-            echo "-1  install monaco && micosoft yahei fonts"
-            echo "-2  config zsh"
-            echo "-3  config vim"
-            echo "-4  config icons"
-            echo "-5  install powerline fonts"
-            echo "-6  add ppa"
-            echo "-7  Ambiance_Mac theme"
-            echo "-8  do all for your system, if your system is new one"
-            echo "-----"
-            echo "if you use zsh && vim, you should install powerline fonts at first"
-            echo "if you want to install apps, you should add ppa at first"
+            echo "------------------------------HELP------------------------------------"
+            echo "----------------------------------------------------------------------"
+            echo "|-0  install applications                                            |"
+            echo "|-1  install monaco && micosoft yahei fonts                          |"
+            echo "|-2  config zsh                                                      |"
+            echo "|-3  config vim                                                      |"
+            echo "|-4  config icons                                                    |"
+            echo "|-5  install powerline fonts                                         |"
+            echo "|-6  add ppa                                                         |"
+            echo "|-7  Ambiance_Mac theme                                              |"
+            echo "|-8  visual studio code                                              |"    
+            echo "|-9  do all for your system, if your system is new one               |"
+            echo "----------------------------------------------------------------------"
+            echo "------------------------------NOTE------------------------------------"
+            echo "|if you use zsh && vim, you should install powerline fonts at first  |"
+            echo "|if you want to install apps, you should add ppa at first            |"
+            echo "----------------------------------------------------------------------"
             echo "bye";;
     esac
 done

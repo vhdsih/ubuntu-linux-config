@@ -5,16 +5,15 @@
 # typora
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE;
 sudo add-apt-repository 'deb https://typora.io ./linux/';
-# wizinote
-sudo add-apt-repository ppa:wiznote-team;
 # indicator-keylock
 sudo add-apt-repository ppa:tsbarnes/indicator-keylock;
 # incicator netspeed
 sudo add-apt-repository ppa:nilarimogard/webupd8
 # ClassicMenu Indicator
-# sudo apt-add-repository ppa:diesch/testing;
+sudo apt-add-repository ppa:diesch/testing;
 # albert
-# sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo add-apt-repository ppa:nilarimogard/webupd8
+
 
 #################################################
 # THEMES

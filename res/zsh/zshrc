@@ -10,7 +10,7 @@
 # crcandy me@Z [11:40:11] [~/Documents/ll] [master *]
 
 # ZSH_THEME="tjkirch_mod"
-ZSH_THEME="bullet-train"
+ZSH_THEME="ys"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -186,16 +186,10 @@ setopt INTERACTIVE_COMMENTS
 #稍微有点混乱，不如 cd 补全实用
 setopt AUTO_CD
 
-#扩展路径
-#/v/c/p/p => /var/cache/pacman/pkg
-setopt complete_in_word
 
 #禁用 core dumps
 limit coredumpsize 0
 
-#Emacs风格 键绑定
-bindkey -e
-#bindkey -v
 #设置 [DEL]键 为向后删除
 #bindkey "\e[3~" delete-char
 
@@ -432,9 +426,4 @@ export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
 export PATH=${JAVA_HOME}/bin:$PATH
 export TOMCAT_HOME=/opt/apache-tomcat-9.0.0.M10
 export NDK=/opt/android-ndk-r13b
-# alias
-alias apti='sudo apt install'
-alias aptud='sudo apt update'
-alias aptug='sudo apt upgrade'
-alias aptf='sudo apt -f install'
 
