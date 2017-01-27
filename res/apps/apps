@@ -36,3 +36,5 @@ python-glade2
 python-pexpect
 python-appindicator 
 libxxf86vm1
+gcc-multilib
+aptitude
