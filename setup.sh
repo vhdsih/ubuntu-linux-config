@@ -2,12 +2,12 @@
 
 # the location of here
 HERE=`pwd`
-
+relative_location=`dirname $0`
 
 # add ppa by this
 PPA=$HERE/res/ppa/ppa.sh
 # my vim config
-VIM=$HERE/res/vim/vimrc
+VIM=$HERE/res/vim/.vimrc
 # my zsh config
 ZSH=$HERE/res/zsh/zshrc
 # applications will be installed
@@ -33,6 +33,16 @@ print_log()
     echo LOGS: $1 >> $LOGS
 }
 
+# check software
+check_software() {
+    which $1 >> /dev/null
+    if [ $? = 0 ]; then
+        print_log "$1 had been installed"
+    else
+        print_log "$1 is not installed, installing now"
+        sudo $2 $1
+    fi
+}
 
 ## update && upgrade system
 update_system()
@@ -53,21 +63,35 @@ update_system()
 }
 
 
-## config the vim
-config_vim()
-{
-    print_log "CONFIG VIM..."
-    mv ~/.vimrc ~/.vimrc.bck
-    mv ~/.vim ~/.vim.bck
-
+# config vim
+config_vim() {
+    print_log "do config for vim..."
+    # vim had been installed?
+    check_software vim 'apt install'
+    # clang had been installed?
+    check_software clang 'apt install'
+    # cmake had been installed?
+    check_software cmake 'apt install'
+    # for .vimrc
+    if [ -f "$HOME/.vimrc" ]; then 
+        print_log "mv $HOME/.vimrc to $HOME/.vimrc.bak"
+        mv $HOME/.vimrc $HOME/.vimrc.bak
+    fi
+    # for .vim
+    if [  -d "$HOME/.vim" ]; then  
+        print_log "mv $HOME/.vim to $HOME/.vim.bak"
+        mv $HOME/.vim $HOME/.vim.bak
+    fi
+    # do config
+    cp $relative_location/res/vim/.vimrc $HOME/
+    cp $relative_location/res/vim/.ycm_extra_conf.py $HOME/
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    cp $VIM ~/.vimrc
-
+    cp -r $relative_location/res/vim/colors ~/.vim/
     vim +PluginInstall +qall
-
-    print_log "VIM DONE"
+    print_log 'config youcompleteme'
+    $HOME/.vim/bundle/YouCompleteMe/install.sh  --clang-completer --system-libclang
+    print_log "done"
 }
-
 
 ## config the zsh
 config_zsh()
